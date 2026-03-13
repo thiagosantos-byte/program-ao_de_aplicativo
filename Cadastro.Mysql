@@ -1,0 +1,79 @@
+// --- ARQUIVO: Pessoa.java (Classe Pai) ---
+class Pessoa {
+    private String nome;
+    private int idade;
+
+    // Construtor da classe base
+    public Pessoa(String nome, int idade) {
+        this.nome = nome;
+        this.idade = idade;
+    }
+
+    // Metodo que sera compartilhado e estendido pelas filhas
+    public void exibirDados() {
+        System.out.println("Nome: " + nome);
+        System.out.println("Idade: " + idade + " anos");
+    }
+
+    // Getters e Setters (para acessar os dados privados)
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+    public int getIdade() { return idade; }
+    public void setIdade(int idade) { this.idade = idade; }
+}
+
+class Funcionario extends Pessoa {
+    private String cargo;
+
+    public Funcionario(String nome, int idade, String cargo) {
+        super(nome, idade); // Passa os dados para o construtor de Pessoa
+        this.cargo = cargo;
+    }
+
+    
+    public void exibirDados() {
+        System.out.println("=== DADOS DO FUNCIONÁRIO ===");
+        super.exibirDados(); // Chama o exibirDados da classe Pessoa
+        System.out.println("Cargo: " + cargo);
+        System.out.println("----------------------------");
+    }
+
+    public String getCargo() { return cargo; }
+    public void setCargo(String cargo) { this.cargo = cargo; }
+}
+
+// --- ARQUIVO: Cliente.java (Classe Filha) ---
+class Cliente extends Pessoa {
+    private String email;
+
+    public Cliente(String nome, int idade, String email) {
+        super(nome, idade);
+        this.email = email;
+    }
+
+  
+    public void exibirDados() {
+        System.out.println("=== DADOS DO CLIENTE ===");
+        super.exibirDados();
+        System.out.println("E-mail: " + email);
+        System.out.println("----------------------------");
+    }
+
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+        // 1. Criar um objeto Funcionario
+        Funcionario func = new Funcionario("Andre Thiago", 19, "Desenvolvedor Sênior");
+
+        // 2. Criar um objeto Cliente
+        Cliente cli = new Cliente("Andre Thiago", 29, "andrethiago@email.com");
+
+        // 3. Chamar o metodo exibirDados() de cada um
+        func.exibirDados();
+        cli.exibirDados();
+    }
+}
