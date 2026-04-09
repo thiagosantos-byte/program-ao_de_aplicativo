@@ -1,8 +1,9 @@
-public class Iphone {
+
+class Iphone {
     private String Interface;
     private String modelo;
-    
-    public Iphone(String Interface,String modelo){
+
+    public Iphone(String Interface, String modelo) {
         this.Interface = Interface;
         this.modelo = modelo;
     }
@@ -22,16 +23,15 @@ public class Iphone {
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
-
 }
 
 
-public class RepMsc extends Iphone {
+class RepMsc extends Iphone {
     private String musica;
     private String duracao;
- 
-    RepMsc(String Interface,String modelo, String musica, String duracao){
-        super(Interface,modelo);
+
+    public RepMsc(String Interface, String modelo, String musica, String duracao) {
+        super(Interface, modelo);
         this.musica = musica;
         this.duracao = duracao;
     }
@@ -51,23 +51,26 @@ public class RepMsc extends Iphone {
     public void setDuracao(String duracao) {
         this.duracao = duracao;
     }
+
     public void tocar() {
         System.out.println("Reproduzindo música...");
     }
-    
+
     public void pausar() {
         System.out.println("Música pausada.");
     }
-    
+
     public void selecionarMusica(String musica) {
         System.out.println("Selecionando música: " + musica);
     }
 }
-public class Aptef extends Iphone {
+
+
+class Aptef extends Iphone {
     private String numero;
-    
-    Aptef(String Interface,String modelo,String numero){
-        super(Interface,modelo);
+
+    public Aptef(String Interface, String modelo, String numero) {
+        super(Interface, modelo);
         this.numero = numero;
     }
 
@@ -78,24 +81,26 @@ public class Aptef extends Iphone {
     public void setNumero(String numero) {
         this.numero = numero;
     }
-   public void ligar(String numero) {
+
+    public void ligar(String numero) {
         System.out.println("Ligando para: " + numero);
     }
-   
+
     public void atender() {
         System.out.println("Atendendo chamada...");
     }
-    
+
     public void iniciarCorreioVoz() {
         System.out.println("Iniciando correio de voz...");
     }
 }
 
-public class Navegador extends Iphone {
+
+class Navegador extends Iphone {
     private String url;
-    
-    public Navegador(String Interface,String modelo, String url){
-        super(Interface,modelo);
+
+    public Navegador(String Interface, String modelo, String url) {
+        super(Interface, modelo);
         this.url = url;
     }
 
@@ -106,7 +111,7 @@ public class Navegador extends Iphone {
     public void setUrl(String url) {
         this.url = url;
     }
-    
+
     public void exibirPagina(String url) {
         System.out.println("Exibindo página: " + url);
     }
@@ -120,15 +125,21 @@ public class Navegador extends Iphone {
     }
 }
 
-public class AtvdExtra {
+
+public class Main {
     public static void main(String[] args) {
-        Iphone i[] = {
-            new Iphone (),
-            new RepMsc("Racionais","12min"),
-            new Aptef("719707070"),
-            new Navegador ("j132j1i3uj");
-        };
-        
+        RepMsc musica = new RepMsc("Touch", "iPhone 14", "Imagine", "3:05");
+        musica.tocar();
+        musica.selecionarMusica("Imagine");
+
+        Aptef telefone = new Aptef("Touch", "iPhone 14", "99999-9999");
+        telefone.ligar("99999-9999");
+        telefone.atender();
+
+        Navegador navegador = new Navegador("Touch", "iPhone 14", "www.google.com");
+        navegador.exibirPagina("www.google.com");
+        navegador.adicionarNovaAba();
+        navegador.atualizarPagina();
     }
 }
 
